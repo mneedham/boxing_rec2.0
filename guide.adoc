@@ -1,0 +1,22 @@
+= Boxing Graph
+:icons: font
+:csv-url: https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master
+
+== Boxing Graph
+
+
+This it a graph on heavyweight boxing fights.
+
+== Importing the data
+
+You can load the data by running the following query:
+
+[source,cypher]
+----
+load csv with headers from "https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master/fights.csv" AS row
+merge(boxer:Boxer{name:row.winner})
+merge(other:Boxer{name:
+row.loser})
+merge(boxer)-[b:BEAT]->(other)
+set b.highlights=row.highlights
+----
