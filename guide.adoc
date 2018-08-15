@@ -20,6 +20,8 @@ merge(boxer)-[b:BEAT]->(other)
 set b.highlights=row.highlights
 ----
 
+
+
 == Finding boxers and the fight in the graph
 
 If you what to find a boxer(node) and there passed fights or potentail fights you can us this Cypher
@@ -30,11 +32,6 @@ MATCH ({ name: 'Anthony Joshua' })-[:BEAT]-(opponent)
 RETURN *
 ----
 
-[source,cypher]
-----
-MATCH ({ name: 'Anthony Joshua' })-[:POTENTAIL_FIGHT]-(opponent)
-RETURN *
-----
 
 == Potential fights
 
@@ -48,3 +45,8 @@ merge(other:Boxer{name:row.fighter2})
 merge(boxer)-[b:POTENTAIL_FIGHT]->(other)
 ----
 
+[source,cypher]
+----
+MATCH ({ name: 'Anthony Joshua' })-[:POTENTAIL_FIGHT]-(opponent)
+RETURN *
+----
