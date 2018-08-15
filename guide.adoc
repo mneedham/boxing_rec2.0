@@ -21,10 +21,8 @@ set b.highlights=row.highlights
 ----
 
 == Finding boxers and the fight in the graph
+
 If you what to find a boxer(node) and there passed fights or potentail fights you can us this Cypher
-
-
-
 
 [source,cypher]
 ----
@@ -37,6 +35,11 @@ RETURN *
 MATCH ({ name: 'Anthony Joshua' })-[:POTENTAIL_FIGHT]-(opponent)
 RETURN *
 ----
+
+== Potential fights
+
+You can also load the data for potential fights:
+
 [source,cypher]
 ----
 load csv with headers from "https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master/potentailfight.csv" AS row
