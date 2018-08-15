@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+
+
+</head>
+<body>
+<h1 style="color:Gold;display: inline;">Winner</h1>
+<h1 style="color:Brown;display: inline;">Loser</h1>
+
+<ul>
+    {% for boxer in boxers %}
+    <li>
+
+        <span >
+            <a style="color:Gold;" href="/fighters/{{boxer.winner.name}}">{{ boxer.winner.name|e }}</a>
+        </span>
+        <span >
+            <a style="color:Brown"  href="/fighters/{{boxer.loser.name}}">{{ boxer.loser.name|e }}</a>
+        </span>
+
+         <a style="color:Gold;" href="/fighters/{{boxer.winner.name}}/{{boxer.loser.name}}">Fight</a>
+
+
+
+    </li>
+    {% endfor %}
+
+
+</ul>
+<h1> Potentail Fight</h1>
+<ul>
+    {% for boxer in potential_fights %}
+    <li>
+
+        <span >
+            <a style="color:Gold;" href="/fighters/{{boxer.winner.name}}">{{ boxer.winner.name|e }}</a>
+        </span>
+        <span >
+            <a style="color:Brown"  href="/fighters/{{boxer.loser.name}}">{{ boxer.loser.name|e }}</a>
+        </span>
+
+         <a style="color:Gold;" href="/fighters/{{boxer.winner.name}}/{{boxer.loser.name}}">Fight</a>
+
+
+
+    </li>
+    {% endfor %}
+
+
+</ul>
+
+
+
+</body>
+</html>
