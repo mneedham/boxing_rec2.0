@@ -15,8 +15,33 @@ You can load the data by running the following query:
 ----
 load csv with headers from "https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master/fights.csv" AS row
 merge(boxer:Boxer{name:row.winner})
-merge(other:Boxer{name:
-row.loser})
+merge(other:Boxer{name:row.loser})
 merge(boxer)-[b:BEAT]->(other)
 set b.highlights=row.highlights
 ----
+
+== Finding boxers and the fight in the graph
+If you what to find a boxer(node) and there passed fights or potentail fights you can us this Cypher
+
+
+
+
+[source,cypher]
+----
+MATCH ({ name: 'Anthony Joshua' })-[:BEAT]-(opponent)
+RETURN *
+----
+
+[source,cypher]
+----
+MATCH ({ name: 'Anthony Joshua' })-[:POTENTAIL_FIGHT]-(opponent)
+RETURN *
+----
+[source,cypher]
+----
+load csv with headers from "https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master/potentailfight.csv" AS row
+merge(boxer:Boxer{name:row.fighter1})
+merge(other:Boxer{name:row.fighter2})
+merge(boxer)-[b:POTENTAIL_FIGHT]->(other)
+----
+
