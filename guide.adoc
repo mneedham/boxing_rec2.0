@@ -50,3 +50,9 @@ merge(boxer)-[b:POTENTAIL_FIGHT]->(other)
 MATCH ({ name: 'Anthony Joshua' })-[:POTENTAIL_FIGHT]-(opponent)
 RETURN *
 ----
+[source,cypher]
+----
+load csv with headers from "https://raw.githubusercontent.com/WATFORD4LIFE/boxing_rec2.0/master/boxer.csv" AS row
+merge(boxer:Boxer{name:row.boxer})
+set boxer += row
+----
